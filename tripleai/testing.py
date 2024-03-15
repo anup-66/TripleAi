@@ -1,3 +1,5 @@
+import random
+
 from openai import OpenAI
 
 # client = OpenAI()
@@ -25,18 +27,39 @@ from openai import OpenAI
 # # Print the generated completion
 # print(completion.choices[0].message)
 
-prompt = """As a new student interested in python, I want to progress from basic concepts to advanced topics in a structured manner. Please provide me with a step-by-step learning pathway, covering key topics, recommended resources, and suggested keywords for further exploration
+prompt ="""
 {
     "Introduction to [Interest/Field]": {
-        "Basic concepts and fundamentals": [],
-        "Recommended readings or articles": [],
-        "Overview of the field and its importance": "",
-        "Keywords for further exploration": []
+        "All Basic concepts and fundamentals": {
+            "topic1": {"description": "", "example": "with proper code examples"},
+            "topic2": {"description": "", "example": "with proper code examples"}
+        },
+        "Recommended readings or articles": {
+            "topic1": {"link": ""},
+            "topic2": {"link": ""}
+        },
+        "Keywords for further exploration": [],
+        "YouTube videos": [
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""}
+        ]
     },
     "Foundational Knowledge": {
-        "Key principles and theories": [],
-        "Core concepts and terminology": [],
-        "Hands-on exercises or projects for practice": [],
+        "All Key principles and theories": {
+            "topic1": {"description": "", "example": "with proper code examples"},
+            "topic2": {"description": "", "example": "with proper code examples"}
+        },
+        "All Core concepts and terminology": {
+            "topic1": {"description": "", "example": "with proper code examples"},
+            "topic2": {"description": "", "example": "with proper code examples"}
+        },
+        "Hands-on exercises or projects for practice": {
+            "topic1": {"link": ""},
+            "topic2": {"link": ""}
+        },
         "Keywords for further exploration": [],
         "YouTube videos": [
             {"title": "", "link": ""},
@@ -47,9 +70,18 @@ prompt = """As a new student interested in python, I want to progress from basic
         ]
     },
     "Intermediate Level": {
-        "Deeper dive into specific subtopics": [],
-        "Advanced theories or methodologies": [],
-        "Case studies or real-world examples": [],
+        "Deeper dive into specific subtopics": {
+            "topic1": {"description": "", "example": "with proper code examples"},
+            "topic2": {"description": "", "example": "with proper code examples"}
+        },
+        "Advanced theories or methodologies": {
+            "topic1": {"description": "", "example": "with proper code examples"},
+            "topic2": {"description": "", "example": "with proper code examples"}
+        },
+        "Case studies or real-world examples": {
+            "topic1": {"link": ""},
+            "topic2": {"link": ""}
+        },
         "Keywords for further exploration": [],
         "YouTube videos": [
             {"title": "", "link": ""},
@@ -60,9 +92,18 @@ prompt = """As a new student interested in python, I want to progress from basic
         ]
     },
     "Advanced Level": {
-        "Specialized topics or advanced techniques": [],
-        "Cutting-edge research or developments": [],
-        "Opportunities for further exploration or specialization": [],
+        "Specialized topics or advanced techniques": {
+            "topic1": {"description": "", "example": "with proper code examples"},
+            "topic2": {"description": "", "example": "with proper code examples"}
+        },
+        "Cutting-edge research or developments": {
+            "topic1": {"description": "", "example": "with proper code examples"},
+            "topic2": {"description": "", "example": "with proper code examples"}
+        },
+        "Opportunities for further exploration or specialization": {
+            "topic1": {"link": ""},
+            "topic2": {"link": ""}
+        },
         "Keywords for further exploration": [],
         "YouTube videos": [
             {"title": "", "link": ""},
@@ -85,75 +126,160 @@ import re
 # Example completion message
 data = """
 {
-"Introduction to Python": {
-"Basic concepts and fundamentals": ["Variables", "Data types", "Control structures", "Functions", "Modules"],
-"Recommended readings or articles": ["Python.org - Official Python documentation", "Real Python - Python tutorials for beginners"],
-"Overview of the field and its importance": "Python is a versatile programming language known for its simplicity and readability. It is widely used in various domains such as web development, data analysis, artificial intelligence, and more.",
-"Keywords for further exploration": ["Python programming", "Python syntax", "Python basics"]
-},
-"Foundational Knowledge": {
-"Key principles and theories": ["Object-oriented programming", "Functional programming", "Error handling"],
-"Core concepts and terminology": ["Classes", "Inheritance", "Polymorphism", "Lambda functions", "Exception handling"],
-"Hands-on exercises or projects for practice": ["Building a simple calculator", "Creating a todo list application", "Implementing basic data structures like lists and dictionaries"],
-"Keywords for further exploration": ["Python object-oriented programming", "Python functions", "Python exceptions"],
-"YouTube videos": [
-{"title": "Python Programming for Beginners - Full Course", "link": "https://www.youtube.com/watch?v=_uQrJ0TkZlc"},
-{"title": "Python Crash Course - Cheat Sheet", "link": "https://www.youtube.com/watch?v=yyxXDseKaD4"},
-{"title": "Python Fundamentals - Variables, Data Types, and Operators", "link": "https://www.youtube.com/watch?v=YYXdXT2l-Gg"},
-{"title": "Object-Oriented Programming (OOP) in Python", "link": "https://www.youtube.com/watch?v=ZDa-Z5JzLYM"},
-{"title": "Python Exception Handling - Try, Except, Else, Finally", "link": "https://www.youtube.com/watch?v=NIWwJbo-9_8"}
-]
-},
-"Intermediate Level": {
-"Deeper dive into specific subtopics": ["Advanced data structures (sets, tuples)", "File handling", "Regular expressions"],
-"Advanced theories or methodologies": ["Decorator functions", "Generators", "Concurrency and parallelism"],
-"Case studies or real-world examples": ["Building a web scraper", "Creating a chatbot", "Implementing a machine learning algorithm"],
-"Keywords for further exploration": ["Python advanced topics", "Python file handling", "Python regular expressions"],
-"YouTube videos": [
-{"title": "Advanced Python Programming - Full Course", "link": "https://www.youtube.com/watch?v=_t8LPnU9RoM"},
-{"title": "Python File I/O - Reading and Writing Files", "link": "https://www.youtube.com/watch?v=Uh2ebFW8OYM"},
-{"title": "Regular Expressions (RegEx) in Python", "link": "https://www.youtube.com/watch?v=K8L6KVGG-7o"},
-{"title": "Python Decorators - Dynamically Alter the Functionality of Your Functions", "link": "https://www.youtube.com/watch?v=FsAPt_9Bf3U"},
-{"title": "Python Generators - How to Use Generators and Yield in Python", "link": "https://www.youtube.com/watch?v=bD05uGo_sVI"}
-]
-},
-"Advanced Level": {
-"Specialized topics or advanced techniques": ["Metaprogramming", "Cython for performance optimization", "Integration with C/C++"],
-"Cutting-edge research or developments": ["Artificial intelligence and machine learning with Python", "Big data processing using Python frameworks (e.g., Apache Spark)"],
-"Opportunities for further exploration or specialization": ["Contributing to open-source Python projects", "Developing Python libraries or packages"],
-"Keywords for further exploration": ["Advanced Python topics", "Python metaprogramming", "Python machine learning"],
-"YouTube videos": [
-{"title": "Metaprogramming in Python - Understanding Metaclasses", "link": "https://www.youtube.com/watch?v=7lmCu8wz8ro"},
-{"title": "Cython - Optimizing Python", "link": "https://www.youtube.com/watch?v=JKCjsRDffXo"},
-{"title": "Building Machine Learning Models in Python", "link": "https://www.youtube.com/watch?v=7eh4d6sabA0"},
-{"title": "Big Data Processing with Python and Apache Spark", "link": "https://www.youtube.com/watch?v=qBd5Vx5av3Q"},
-{"title": "Contributing to Open Source - Getting Started with Git and GitHub", "link": "https://www.youtube.com/watch?v=HkdAHXoRtos"}
-]
-},
-"Predicted Timelines": {
-"Introductory Level": "1-2 weeks",
-"Foundational Knowledge": "2-4 weeks",
-"Intermediate Level": "4-6 weeks",
-"Advanced Level": "6-8 weeks"
-}
-}"""
-
-
-def preprocess_completion(data):
-    intermediatory = data["Advanced Level"]["YouTube videos"]
-    llist = []
-    for i in intermediatory:
-        title = i["title"]
-        link = i["link"]
-        llist.append(link)
-        print(title)
-        print(link)
-    print(llist)
-    # print(intermediatory)
-    return "done"
-
-import json
-# Preprocess the completion message
-processed_sections = preprocess_completion(json.loads(data))
+    "Introduction to python": {
+        "All Basic concepts and fundamentals": [
+            {
+                "description": "Variables are used to store data in a program.",
+                "example": {
+                    "code": "x = 5"
+                }
+            },
+            {
+                "description": "Data types define the type of data that can be stored in a variable.",
+                "example": {
+                    "code": "x = 5   # integer\nd = 3.14  # float\ns = 'hello'  # string"
+                }
+            },
+            {
+                "description": "Operators are used to perform operations on variables and values.",
+                "example": {
+                    "code": "x = 5\ny = 2\nsum = x + y"
+                }
+            },
+            {
+                "description": "Control structures are used to control the flow of execution in a program.",
+                "example": {
+                    "code": "if condition:\n    # do something\nelse:\n    # do something else"
+                }
+            },
+            {
+                "description": "Functions are blocks of reusable code that perform a specific task.",
+                "example": {
+                    "code": "def greet(name):\n    print('Hello, ' + name)\n\ngreet('John')"
+                }
+            }
+        ],
+        "Recommended readings or articles": [
+            {"Python Crash Course by Eric Matthes": "https://www.amazon.com/Python-Crash-Course-2nd-Edition/dp/1593279280"},
+            {"Automate the Boring Stuff with Python by Al Sweigart": "https://www.amazon.com/Automate-Boring-Stuff-Python-2nd/dp/1593279922"},
+            {"Learning Python by Mark Lutz": "https://www.amazon.com/Learning-Python-5th-Mark-Lutz/dp/1449355730"}
+        ],
+        "Keywords for further exploration": [],
+        "YouTube videos": [
+            {"title": "Python Basics Tutorial", "link": "https://www.youtube.com/watch?v=7lmCu8wz8ro"},
+            {"title": "Python for Beginners", "link": "https://www.youtube.com/watch?v=JKCjsRDffXo"},
+            {"title": "Python Data Structures Tutorial", "link": "https://www.youtube.com/watch?v=7eh4d6sabA0"},
+            {"title": "Python Functions Tutorial", "link": "https://www.youtube.com/watch?v=qBd5Vx5av3Q"},
+            {"title": "Object-Oriented Programming in Python", "link": "https://www.youtube.com/watch?v=HkdAHXoRtos"}
+        ]
+    },
+    "Foundational Knowledge": {
+        "All Key principles and theories": [
+            {
+                "description": "Object-oriented programming (OOP) is a programming paradigm based on the concept of objects.",
+                "example": {
+                    "code": "class Car:\n    def __init__(self, make, model):\n        self.make = make\n        self.model = model\n\nmy_car = Car('Toyota', 'Corolla')"
+                }
+            },
+            {
+                "description": "Functional programming treats computation as the evaluation of mathematical functions.",
+                "example": {
+                    "code": "# Function to calculate factorial\nimport math\nresult = math.factorial(5)"
+                }
+            },
+            {
+                "description": "Recursion is a programming technique where a function calls itself to solve a problem.",
+                "example": {
+                    "code": "def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)"
+                }
+            }
+        ],
+        "All Core concepts and terminology": [
+            {
+                "description": "Lists are ordered collections of items.",
+                "example": {
+                    "code": "my_list = [1, 2, 3]"
+                }
+            },
+            {
+                "description": "Tuples are immutable ordered collections of items.",
+                "example": {
+                    "code": "my_tuple = (1, 2, 3)"
+                }
+            },
+            {
+                "description": "Dictionaries are unordered collections of key-value pairs.",
+                "example": {
+                    "code": "my_dict = {'key': 'value'}"
+                }
+            }
+        ],
+        "Hands-on exercises or projects for practice": [
+            {"Project Euler": "https://projecteuler.net/"}
+        ],
+        "Keywords for further exploration": [],
+        "YouTube videos": [
+            {"title": "Object-Oriented Programming", "link": "https://www.youtube.com/watch?v=ZDa-Z5JzLYM"},
+            {"title": "Functional Programming", "link": "https://www.youtube.com/watch?v=LnX3B9oaKzw"},
+            {"title": "Recursion in Python", "link": "https://www.youtube.com/watch?v=wMNrSM5RFMc"}
+        ]
+    },
+    "Intermediate Level": {
+        "Deeper dive into specific subtopics": [
+            {
+                "description": "Advanced data structures like stacks, queues, and trees.",
+                "example": {
+                    "code": "from collections import deque\nqueue = deque([1, 2, 3])"
+                }
+            },
+            {
+                "description": "Concurrency and parallelism with Python's threading and multiprocessing modules.",
+                "example": {
+                    "code": "import threading\n\ndef print_numbers():\n    for i in range(5):\n        print(i)\n\nthread = threading.Thread(target=print_numbers)\nthread.start()"
+                }
+            }
+        ],
+        "Advanced theories or methodologies": [
+            {
+                "description": "Design patterns for software architecture and development.",
+                "example": {
+                    "code": "from abc import ABC, abstractmethod\n\nclass Animal(ABC):\n\n    @abstractmethod\n    def make_sound(self):\n        pass"
+                }
+            },
+            {
+                "description": "Big O notation and algorithmic complexity analysis.",
+                "example": {
+                    "code": "# Time complexity: O(n)\ndef linear_search(arr, target):\n    for i in range(len(arr)):\n        if arr[i] == target:\n            return i\n    return -1"
+                }
+            }
+        ],
+        "Case studies or real-world examples": [
+            {"Python for Data Analysis by Wes McKinney": "https://www.amazon.com/Python-Data-Analysis-Wrangling-IPython/dp/1491957662"}
+        ],
+        "Keywords for further exploration": [],
+        "YouTube videos": [
+            {"title": "Advanced Python Concepts", "link": "https://www.youtube.com/watch?v=JGwNWGJ8XDI"},
+            {"
+"""
+#
+# def preprocess_completion(data):
+#     intermediatory = data["Advanced Level"]["YouTube videos"]
+#     llist = []
+#     for i in intermediatory:
+#         title = i["title"]
+#         link = i["link"]
+#         llist.append(link)
+#         print(title)
+#         print(link)
+#     print(llist)
+#     # print(intermediatory)
+#     return "done"
+#
+# import json
+# # Preprocess the completion message
+# processed_sections = preprocess_completion(json.loads(data))
 
 # print(data)
+
+import string
+
