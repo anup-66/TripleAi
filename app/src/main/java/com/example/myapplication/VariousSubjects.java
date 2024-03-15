@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationView;
 public class VariousSubjects extends AppCompatActivity {
 
     Button j1 , a1 , p1;
+    Button search;
     EditText editText;
 
     @Override
@@ -31,6 +32,14 @@ public class VariousSubjects extends AppCompatActivity {
         j1 = findViewById(R.id.button3);
         a1 = findViewById(R.id.button4);
         p1 = findViewById(R.id.button5);
+        search = findViewById(R.id.button7);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
 
         editText = findViewById(R.id.editTextText);
 
