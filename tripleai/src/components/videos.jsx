@@ -78,6 +78,8 @@ function YouTubePlayer() {
     try {
       const response = await axios.get('http://localhost:5000/data'); // Change the URL to match your Flask endpoint
       setData(response.data);
+
+      console.log(data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -102,7 +104,6 @@ function YouTubePlayer() {
           <div style={{ marginTop: '20px' }}>
             {selectedTopic !== null && (
               <div>
-                <h3>{data[0][selectedTopic]}</h3>
                 <p>{data[1][selectedTopic]}</p>
                 <p>{data[2][selectedTopic]}</p>
               </div>
@@ -114,4 +115,3 @@ function YouTubePlayer() {
   );
 }
 export default YouTubePlayer;
-// ReactDOM.render(<DynamicTable />, document.getElementById('root'));
