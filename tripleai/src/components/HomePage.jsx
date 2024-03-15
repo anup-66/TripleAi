@@ -1,6 +1,11 @@
+
+import React, { useState, useEffect } from "react";
 function HomePage(){
     return(
-        <p>HEllo</p>
+        <div>
+        <p>HElo</p>
+
+        </div>
 
     );
 }
