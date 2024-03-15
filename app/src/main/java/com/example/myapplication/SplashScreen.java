@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
         Window window = this.getWindow();
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
 
-        textView = findViewById(R.id.textView);
+        textView = findViewById(R.id.text2);
         lottie = findViewById(R.id.lottie);
 
 

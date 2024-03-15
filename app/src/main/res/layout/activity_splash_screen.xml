@@ -8,7 +8,7 @@
     tools:context=".SplashScreen">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text2"
         android:layout_width="267dp"
         android:layout_height="46dp"
         android:layout_alignParentTop="true"
@@ -25,6 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.916" />
 
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie"
         android:layout_width="386dp"
@@ -39,6 +40,17 @@
         app:layout_constraintVertical_bias="0.539"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/coding" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="191dp"-->
+<!--        android:layout_height="96dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.9"-->
+<!--        app:srcCompat="@drawable/logo" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
