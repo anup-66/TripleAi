@@ -32,13 +32,13 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
-        android:layout_width="360dp"
-        android:layout_height="0dp"
+        style="@style/custom_card_view_style"
+        android:layout_width="412dp"
+        android:layout_height="602dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/custom_card_view_style"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingClass">

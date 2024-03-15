@@ -41,26 +41,26 @@
         app:lottie_repeatMode="restart" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="413dp"
-        android:layout_height="155dp"
-        android:backgroundTint="@color/black"
+        android:layout_width="411dp"
+        android:layout_height="140dp"
+        android:backgroundTint="@color/greyish"
         app:cardCornerRadius="40dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372">
+        app:layout_constraintVertical_bias="0.371">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="392dp"
-            android:layout_height="133dp">
+            android:layout_width="388dp"
+            android:layout_height="132dp">
 
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="99dp"
                 android:layout_height="83dp"
-                android:src="@drawable/html"
+                android:src="@drawable/java"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.136"
@@ -88,7 +88,7 @@
                 android:id="@+id/textView"
                 android:layout_width="234dp"
                 android:layout_height="53dp"
-                android:text="Get immersed in the fantasy land of web development, where you can make mind-blowing websites."
+               android:text="Let's tend to java. Wanna learn interesting frameworks and go deeper into mother of all language !"
                 android:textColor="@color/white"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -106,7 +106,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="411dp"
         android:layout_height="140dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/greyish"
         app:cardCornerRadius="40dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -171,7 +171,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="411dp"
         android:layout_height="140dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/greyish"
         app:cardCornerRadius="40dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
