@@ -1,5 +1,8 @@
 import json
-data =  """
+
+from flask import jsonify
+
+data = """
 {
     "Introduction to python": {
         "All Basic concepts and fundamentals": {
@@ -118,21 +121,62 @@ data =  """
 
 """
 
-my_data = json.loads(data)
-name = 'python'
-Introduction = my_data[f'Introduction to {name}']
-Basic_course = Introduction['All Basic concepts and fundamentals']
-def for_def_exam(text):
-    keys_arr = []
-    vals_arr = []
-    topic = []
-    for keys,vals in text.items():
-        topic.append(keys)
-        for key,val in vals.items():
-            if key=="description":
-                keys_arr.append(val)
-            else:
-                vals_arr.append(val)
-    array = [topic,keys_arr,vals_arr]
-    return array
-print(for_def_exam(Basic_course))
+
+def return_data(name, data):
+    my_data = json.loads(data)
+    name = 'python'
+
+    def for_def_exam(text):
+        keys_arr = []
+        vals_arr = []
+        topic = []
+        for keys, vals in text.items():
+            topic.append(keys)
+            for key, val in vals.items():
+                if key == "description":
+                    keys_arr.append(val)
+                else:
+                    vals_arr.append(val)
+        array = [topic, keys_arr, vals_arr]
+        return array
+
+    def youtube_video(text):
+        return [[i['title'] for i in text['YouTube videos']], [i['link'] for i in text['YouTube videos']]]
+
+    def article(text):
+        return [[key for key in text], [val['link'] for val in text.values()]]
+
+    Introduction = my_data[f'Introduction to {name}']
+    basic_course_ = for_def_exam(Introduction['All Basic concepts and fundamentals'])
+    art = article(Introduction.get("Recommended readings or articles"))
+    youtube_1 = youtube_video(Introduction)
+    block1 = [basic_course_, art, Introduction["Keywords for further exploration"], youtube_1]
+    # print(block1)
+
+    Foundation = my_data['Foundational Knowledge']
+    all_key = for_def_exam(Foundation['All Key principles and theories'])
+    all_core = for_def_exam(Foundation['All Core concepts and terminology'])
+    Hands_on = article(Foundation.get('Hands-on exercises or projects for practice'))
+    block2 = [all_key, all_core, Hands_on, Foundation['Keywords for further exploration'], youtube_video(Foundation)]
+    # print(block2)
+
+    Intermediate = my_data.get('Intermediate Level')
+    deep = for_def_exam(Intermediate.get('Deeper dive into specific subtopics'))
+    adv_theory = for_def_exam((Intermediate.get('Advanced theories or methodologies')))
+    case_studies = article(Intermediate.get('Case studies or real-world examples'))
+    key_word = Intermediate['Keywords for further exploration']
+    youtube_2 = youtube_video(Intermediate)
+    block3 = [deep, adv_theory, case_studies, key_word, youtube_2]
+    # print(block3)
+
+    Advanced = my_data.get('Advanced Level')
+    Special = for_def_exam(Advanced.get('Specialized topics or advanced techniques'))
+    Cutting = for_def_exam((Advanced.get('Cutting-edge research or developments')))
+    Opportunities = article(Advanced.get('Opportunities for further exploration or specialization'))
+    key_word_2 = Advanced['Keywords for further exploration']
+    youtube_3 = youtube_video(Advanced)
+    block4 = [Special, Cutting, Opportunities, key_word_2, youtube_3]
+
+    final_data = [block1, block2, block3, block4]
+    return final_data
+
