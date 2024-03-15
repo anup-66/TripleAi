@@ -27,6 +27,42 @@ public class JavaFrame extends AppCompatActivity {
         Window window = this.getWindow();
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
 
+        bottomNavigationView = findViewById(R.id.bottomView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
 
+                if(id == R.id.home){
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.add(R.id.container,new Dashboard());
+                    ft.commit();
+                }
+
+                if(id == R.id.code){
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.add(R.id.container,new Code());
+                    ft.commit();
+                }
+
+                if(id == R.id.performance){
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.add(R.id.container,new Performance());
+                    ft.commit();
+                }
+
+                if(id == R.id.money){
+                    FragmentManager fm = getSupportFragmentManager();
+                    FragmentTransaction ft = fm.beginTransaction();
+                    ft.add(R.id.container,new Transactions());
+                    ft.commit();
+                }
+                return false;
+            }
+        });
+//    bottomNavigationView.setSelectedItemId(R.id.home);
     }
 }
