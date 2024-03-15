@@ -11,13 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class VariousSubjects extends AppCompatActivity {
 
     Button j1 , a1 , p1;
-
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,10 @@ public class VariousSubjects extends AppCompatActivity {
         j1 = findViewById(R.id.button3);
         a1 = findViewById(R.id.button4);
         p1 = findViewById(R.id.button5);
+
+        editText = findViewById(R.id.editTextText);
+
+        String s = editText.toString();
 
 
         j1.setOnClickListener((view -> startActivity(new Intent(VariousSubjects.this , JavaFrame.class))));
