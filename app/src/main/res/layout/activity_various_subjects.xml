@@ -24,21 +24,19 @@
         app:titleTextColor="@color/white"
         tools:ignore="MissingConstraints" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottie"
-        android:layout_width="159dp"
-        android:layout_height="129dp"
-        android:layout_centerInParent="true"
-        android:elevation="5dp"
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="314dp"
+        android:layout_height="47dp"
+        android:drawableLeft="@drawable/baseline_search_24"
+        android:ems="10"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/hello"
-        app:lottie_repeatMode="restart" />
+        app:layout_constraintVertical_bias="0.101" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="411dp"
