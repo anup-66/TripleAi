@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "790580362803",
+    "project_id": "tripleai-9c5fd",
+    "storage_bucket": "tripleai-9c5fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790580362803:android:b8c3f0c4c217e4cbdb6d46",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgwqQsegmD_oIg_oECukjAviOBNjEAF34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

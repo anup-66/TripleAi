@@ -43,9 +43,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.expandableLayout.setVisibility(isExpandable? View.VISIBLE: View.GONE);
 
         if(isExpandable){
-            holder.mArrowImage.setImageResource(R.drawable.arrow_up);
+            holder.mArrowImage.setImageResource(R.drawable.baseline_keyboard_arrow_up_24);
         }else{
-            holder.mArrowImage.setImageResource(R.drawable.arrow_down);
+            holder.mArrowImage.setImageResource(R.drawable.baseline_keyboard_arrow_down_24);
         }
 
 

@@ -7,29 +7,36 @@
     android:background="@color/black"
     tools:context=".Dashboard">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="413dp"
-        android:layout_height="62dp"
-        android:background="@color/black"
-        android:gravity="center"
-        android:textAlignment="center"
-        app:title="DashBoard"
-        app:titleTextColor="@color/white"
-        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_code"
-            android:layout_width="391dp"
-            android:layout_height="725dp"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="413dp"
+            android:layout_height="62dp"
+            android:background="@color/black"
+            android:gravity="center"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.001"
+            app:title="DashBoard"
+            app:titleTextColor="@color/white"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_code"
+            android:layout_width="386dp"
+            android:layout_height="662dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintVertical_bias="0.743" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

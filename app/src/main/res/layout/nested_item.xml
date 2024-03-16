@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:onClick="onTextViewClicked"
         android:text="Grocery and Stationary"
-        android:textColor="#8c8c8c"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
 

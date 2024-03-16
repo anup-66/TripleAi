@@ -12,19 +12,9 @@
         android:title="Performance"
         android:icon="@drawable/baseline_graphic_eq_24"/>
 
-
-<!--    <item android:id="@+id/settings"-->
-<!--        android:title="Settings"-->
-<!--        android:icon="@drawable/baseline_settings_24"/>-->
-
     <item android:id="@+id/support"
         android:title="Support"
         android:icon="@drawable/baseline_supervisor_account_24"/>
-
-<!--    <item android:id="@+id/money"-->
-<!--        android:title="Transaction"-->
-<!--        android:icon="@drawable/baseline_attach_money_24"/>-->
-
 
 
 </menu>

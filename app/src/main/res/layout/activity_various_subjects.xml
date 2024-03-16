@@ -26,16 +26,15 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie1"
-        android:layout_width="256dp"
-        android:layout_height="151dp"
+        android:layout_width="370dp"
+        android:layout_height="164dp"
         android:layout_centerInParent="true"
         android:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132"
+        app:layout_constraintVertical_bias="0.119"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/hello" />
@@ -43,11 +42,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="411dp"
         android:layout_height="140dp"
-        android:backgroundTint="@color/greyish"
+        android:backgroundTint="#808080"
         app:cardCornerRadius="40dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.371">
 
@@ -75,8 +75,9 @@
                 android:layout_marginTop="13dp"
                 android:layout_marginEnd="22dp"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/lightgrey"
+                android:backgroundTint="@color/black"
                 android:text="Learn Now !"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.869"
@@ -88,7 +89,7 @@
                 android:id="@+id/textView"
                 android:layout_width="234dp"
                 android:layout_height="53dp"
-               android:text="Let's tend to java. Wanna learn interesting frameworks and go deeper into mother of all language !"
+                android:text="Let's tend to java. Wanna learn interesting frameworks and go deeper into mother of all language !"
                 android:textColor="@color/white"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -106,13 +107,15 @@
     <androidx.cardview.widget.CardView
         android:layout_width="411dp"
         android:layout_height="140dp"
-        android:backgroundTint="@color/greyish"
+        android:backgroundTint="#808080"
         app:cardCornerRadius="40dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" >
+        app:layout_constraintVertical_bias="0.634">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="392dp"
@@ -139,8 +142,9 @@
                 android:layout_marginTop="13dp"
                 android:layout_marginEnd="22dp"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/lightgrey"
+                android:backgroundTint="@color/black"
                 android:text="Learn Now !"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.869"
@@ -171,13 +175,15 @@
     <androidx.cardview.widget.CardView
         android:layout_width="411dp"
         android:layout_height="140dp"
-        android:backgroundTint="@color/greyish"
+        android:backgroundTint="#808080"
         app:cardCornerRadius="40dp"
         app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972">
+        app:layout_constraintVertical_bias="0.899">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="389dp"
@@ -204,8 +210,9 @@
                 android:layout_marginTop="13dp"
                 android:layout_marginEnd="22dp"
                 android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/lightgrey"
+                android:backgroundTint="@color/black"
                 android:text="Learn Now !"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.924"

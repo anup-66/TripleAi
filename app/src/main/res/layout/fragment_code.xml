@@ -18,4 +18,42 @@
         app:titleTextColor="@color/white"
         tools:ignore="MissingConstraints" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="80dp"
+            android:scaleType="fitXY" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:text="take"
+            android:layout_marginTop="60dp"
+            android:backgroundTint="@color/lightgrey"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="188dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/lightgrey"
+            android:text="Submit!"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
 </FrameLayout>

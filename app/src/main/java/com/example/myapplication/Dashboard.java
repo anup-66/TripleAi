@@ -196,7 +196,7 @@ public class Dashboard extends Fragment {
 
 
     public void dummy(){
-        System.out.println(output);
+//        System.out.println(output);
 
         try {
             JSONObject jsonObject = new JSONObject(output);
@@ -204,7 +204,7 @@ public class Dashboard extends Fragment {
             Iterator<String> keys = jsonObject.keys();
             while (keys.hasNext()) {
                 String key = keys.next();
-                System.out.println("Key: " + key);
+//                System.out.println("Key: " + key);
                 if(!map.containsKey(key)){
                     map.put(key, new HashMap<>());
                 }
@@ -216,8 +216,8 @@ public class Dashboard extends Fragment {
 
                         String innerKey = innerKeys.next();
 
-                        System.out.println("    Inner Key: " + innerKey);
-                        System.out.println("    Inner Value: " + preprocessURL(innerObject.get(innerKey).toString()));
+//                        System.out.println("    Inner Key: " + innerKey);
+//                        System.out.println("    Inner Value: " + preprocessURL(innerObject.get(innerKey).toString()));
 
                         Objects.requireNonNull(map.get(key)).put(innerKey, preprocessURL(innerObject.get(innerKey).toString()));
                     }
@@ -227,8 +227,8 @@ public class Dashboard extends Fragment {
                         JSONObject innerObject = innerArray.getJSONObject(i);
                         for (Iterator<String> innerKeys = innerObject.keys(); innerKeys.hasNext(); ) {
                             String innerKey = innerKeys.next();
-                            System.out.println("    Inner Key: " + innerKey);
-                            System.out.println("    Inner Value: " + preprocessURL(innerObject.get(innerKey).toString()));
+//                            System.out.println("    Inner Key: " + innerKey);
+//                            System.out.println("    Inner Value: " + preprocessURL(innerObject.get(innerKey).toString()));
                             Objects.requireNonNull(map.get(key)).put(innerKey, preprocessURL(innerObject.get(innerKey).toString()));
                         }
                     }
@@ -244,9 +244,9 @@ public class Dashboard extends Fragment {
 
 
 
-        for (String i: map.keySet()) {
-            System.out.println(i + "--->" + map.get(i));
-        }
+//        for (String i: map.keySet()) {
+//            System.out.println(i + "--->" + map.get(i));
+//        }
 
 
 
@@ -257,9 +257,8 @@ public class Dashboard extends Fragment {
         modelList = new ArrayList<>();
 
         for (String i: map.keySet()) {
-            DataModel model = new DataModel(map.get(i), i);
-            modelList.add(model);
-            System.out.println(i + "--->" + map.get(i));
+            modelList.add(new DataModel(map.get(i), i));
+//            System.out.println(i + "--->" + map.get(i));
         }
 
         itemAdapter = new ItemAdapter(getContext(), modelList);
