@@ -34,13 +34,7 @@ public class VariousSubjects extends AppCompatActivity {
         p1 = findViewById(R.id.button5);
         search = findViewById(R.id.button7);
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                
-            }
-        });
-
+     
         editText = findViewById(R.id.editTextText);
 
         String s = editText.toString();
