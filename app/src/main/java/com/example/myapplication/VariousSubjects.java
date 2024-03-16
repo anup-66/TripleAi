@@ -44,82 +44,98 @@ public class VariousSubjects extends AppCompatActivity {
         j1 = findViewById(R.id.button3);
         a1 = findViewById(R.id.button4);
         p1 = findViewById(R.id.button5);
-        search = findViewById(R.id.button7);
-        editText = findViewById(R.id.editTextText);
-        String text  = editText.getText().toString();
-        String prompt = "{As a new student interested in" + text +
-                ", I want to progress from basic concepts to advanced topics in a structured manner. Please provide me with a step-by-step learning pathway, covering key topics, recommended resources, and suggested keywords for further exploration.\\n Provide me all the things in given format only.\n" +
-                "    \"Introduction to [Interest/Field]\": {\n" +
-                "         \"All Basic concepts and fundamentals\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
-                "        \"Recommended readings or articles\": [topic1:{link},topic2:{link},...],\n" +
-                "        \"Keywords for further exploration\": []\n" +
-                "         \"YouTube videos\": [\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"}\n" +
-                "        ]\n" +
-                "    },\n" +
-                "    \"Foundational Knowledge\": {\n" +
-                "        \"All Key principles and theories\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
-                "        \"All Core concepts and terminology\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
-                "        \"Hands-on exercises or projects for practice\": [topic1:{link},topic2:{link},...],\n" +
-                "        \"Keywords for further exploration\": [],\n" +
-                "        \"YouTube videos\": [\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"}\n" +
-                "        ]\n" +
-                "    },\n" +
-                "    \"Intermediate Level\": {\n" +
-                "        \"Deeper dive into specific subtopics\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
-                "        \"Advanced theories or methodologies\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
-                "        \"Case studies or real-world examples\": [topic1:{link},topic2:{link},...],\n" +
-                "        \"Keywords for further exploration\": [],\n" +
-                "        \"YouTube videos\": [\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"}\n" +
-                "        ]\n" +
-                "    },\n" +
-                "    \"Advanced Level\": {\n" +
-                "        \"Specialized topics or advanced techniques\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
-                "        \"Cutting-edge research or developments\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
-                "        \"Opportunities for further exploration or specialization\": [topic1:{link},topic2:{link},...],\n" +
-                "        \"Keywords for further exploration\": [],\n" +
-                "        \"YouTube videos\": [\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"},\n" +
-                "            {\"title\": \"\", \"link\": \"\"}\n" +
-                "        ]\n" +
-                "    },\n" +
-                "    \"Predicted Timelines\": {\n" +
-                "        \"Introductory Level\": \"\",\n" +
-                "        \"Foundational Knowledge\": \"\",\n" +
-                "        \"Intermediate Level\": \"\",\n" +
-                "        \"Advanced Level\": \"\"\n" +
-                "    }\n" +
-                "}";
 
 
 
 
-     
-        editText = findViewById(R.id.editTextText);
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gptCall(prompt);
-            }
-        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        String text  = "";
+//        String prompt = "{As a new student interested in" + text +
+//                ", I want to progress from basic concepts to advanced topics in a structured manner. Please provide me with a step-by-step learning pathway, covering key topics, recommended resources, and suggested keywords for further exploration.\\n Provide me all the things in given format only.\n" +
+//                "    \"Introduction to [Interest/Field]\": {\n" +
+//                "         \"All Basic concepts and fundamentals\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Recommended readings or articles\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": []\n" +
+//                "         \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Foundational Knowledge\": {\n" +
+//                "        \"All Key principles and theories\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"All Core concepts and terminology\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Hands-on exercises or projects for practice\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": [],\n" +
+//                "        \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Intermediate Level\": {\n" +
+//                "        \"Deeper dive into specific subtopics\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Advanced theories or methodologies\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Case studies or real-world examples\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": [],\n" +
+//                "        \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Advanced Level\": {\n" +
+//                "        \"Specialized topics or advanced techniques\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Cutting-edge research or developments\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Opportunities for further exploration or specialization\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": [],\n" +
+//                "        \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Predicted Timelines\": {\n" +
+//                "        \"Introductory Level\": \"\",\n" +
+//                "        \"Foundational Knowledge\": \"\",\n" +
+//                "        \"Intermediate Level\": \"\",\n" +
+//                "        \"Advanced Level\": \"\"\n" +
+//                "    }\n" +
+//                "}";
+
 
 
 

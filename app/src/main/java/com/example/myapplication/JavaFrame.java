@@ -2,18 +2,14 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.Objects;
 
 public class JavaFrame extends AppCompatActivity {
 
@@ -54,10 +50,10 @@ public class JavaFrame extends AppCompatActivity {
                     ft.commit();
                 }
 
-                if(id == R.id.money){
+                if(id == R.id.support){
                     FragmentManager fm = getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
-                    ft.add(R.id.container,new Transactions());
+                    ft.add(R.id.container,new Support());
                     ft.commit();
                 }
                 return false;

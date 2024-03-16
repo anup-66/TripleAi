@@ -25,8 +25,8 @@
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
-            android:layout_width="215dp"
-            android:layout_height="196dp"
+            android:layout_width="190dp"
+            android:layout_height="177dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.015"
@@ -37,11 +37,10 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="157dp"
-            android:layout_height="201dp"
+            android:layout_width="167dp"
+            android:layout_height="154dp"
             android:text="Here is your division of the modules completed from the past 1 week.
-
-            This visually engaging chart offers a clear representation of key data points, including statistics on programming language usage"
+            This chart offers a clear representation of key data points, including statistics on programming language usage"
             android:textColor="@color/white"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,28 +50,33 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.146" />
 
+
         <androidx.cardview.widget.CardView
-            android:layout_width="401dp"
-            android:layout_height="173dp"
+            android:id="@+id/cardView3"
+            android:layout_width="376dp"
+            android:layout_height="171dp"
             android:backgroundTint="@color/white"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
             app:cardCornerRadius="15dp"
             app:cardElevation="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.577">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="63dp">
 
                 <ImageView
-                    android:layout_width="62dp"
-                    android:layout_height="56dp"
+                    android:layout_width="52dp"
+                    android:layout_height="47dp"
                     android:layout_gravity="fill"
-                    android:src="@drawable/icon"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
+                    android:src="@drawable/icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -84,54 +88,57 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:layout_width="316dp"
-                android:layout_height="wrap_content"
+                android:layout_width="312dp"
+                android:layout_height="28dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="55dp"
                 android:text="Java Courses"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="23sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="32dp"
                 android:layout_marginLeft="10dp"
-                android:text="46 videos"
-                android:textSize="20sp"
-                android:textColor="@color/black"
                 android:layout_marginTop="100dp"
-                android:textStyle="bold"/>
+                android:text="46 videos"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="278dp"
                 android:layout_height="34dp"
                 android:layout_marginTop="130dp"
-                android:src="@drawable/lesstwo"/>
+                android:src="@drawable/lesstwo" />
 
 
         </androidx.cardview.widget.CardView>
 
-
         <androidx.cardview.widget.CardView
-            android:layout_width="401dp"
-            android:layout_height="173dp"
+            android:id="@+id/cardView2"
+            android:layout_width="376dp"
+            android:layout_height="171dp"
             android:backgroundTint="@color/white"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
             app:cardCornerRadius="15dp"
             app:cardElevation="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.827">
+            app:layout_constraintVertical_bias="0.92">
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="63dp">
 
                 <ImageView
-                    android:layout_width="62dp"
-                    android:layout_height="56dp"
+                    android:layout_width="51dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="fill"
                     android:paddingLeft="10dp"
                     android:paddingTop="5dp"
@@ -174,6 +181,22 @@
 
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="404dp"
+            android:layout_height="38dp"
+            android:background="@drawable/edit_border"
+            android:text="   Continue Learnig..."
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.089"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.374" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
