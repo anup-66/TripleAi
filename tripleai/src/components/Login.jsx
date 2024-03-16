@@ -56,8 +56,8 @@ function Login() {
             <Link to={"/SignUp"}>Sign Up!</Link>
           </p>
         </div>
-        <div className="w-[500px] h-[400px] absolute shadow-2xl mt-[50px]">
-          <img src="/assets/education.jpg" />
+        <div className="w-[500px] h-[300px] absolute shadow-2xl mt-[50px]">
+          <img src="/assets/tai.jpeg" />
         </div>
       </div>
     </div>
