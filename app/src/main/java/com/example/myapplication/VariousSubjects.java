@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class VariousSubjects extends AppCompatActivity {
@@ -46,10 +47,9 @@ public class VariousSubjects extends AppCompatActivity {
         search = findViewById(R.id.button7);
         editText = findViewById(R.id.editTextText);
         String text  = editText.getText().toString();
-
-        String prompt = "{\n" +
-                "    \"Introduction to " + text +
-                "Two Pointer Method\": {\n" +
+        String prompt = "{As a new student interested in" + text +
+                ", I want to progress from basic concepts to advanced topics in a structured manner. Please provide me with a step-by-step learning pathway, covering key topics, recommended resources, and suggested keywords for further exploration.\\n Provide me all the things in given format only.\n" +
+                "    \"Introduction to [Interest/Field]\": {\n" +
                 "         \"All Basic concepts and fundamentals\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
                 "        \"Recommended readings or articles\": [topic1:{link},topic2:{link},...],\n" +
                 "        \"Keywords for further exploration\": []\n" +
@@ -183,7 +183,7 @@ public class VariousSubjects extends AppCompatActivity {
 
 
                 output = stringText.toString();
-                System.out.println(output);
+                dummy();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -212,5 +212,46 @@ public class VariousSubjects extends AppCompatActivity {
 
         jsonObjectRequest.setRetryPolicy(retryPolicy);
         Volley.newRequestQueue(getApplicationContext()).add(jsonObjectRequest);
+    }
+
+
+    public void dummy(){
+        System.out.println(output);
+
+        try {
+            JSONObject jsonObject = new JSONObject(output);
+
+            Iterator<String> keys = jsonObject.keys();
+            while (keys.hasNext()) {
+                String key = keys.next();
+                System.out.println("Key: " + key);
+
+                Object value = jsonObject.get(key);
+                if (value instanceof JSONObject) {
+                    JSONObject innerObject = (JSONObject) value;
+                    for (Iterator<String> innerKeys = innerObject.keys(); innerKeys.hasNext(); ) {
+                        String innerKey = innerKeys.next();
+                        System.out.println("    Inner Key: " + innerKey);
+                        System.out.println("    Inner Value: " + preprocessURL(innerObject.get(innerKey).toString()));
+                    }
+                } else if (value instanceof JSONArray) {
+                    JSONArray innerArray = (JSONArray) value;
+                    for (int i = 0; i < innerArray.length(); i++) {
+                        JSONObject innerObject = innerArray.getJSONObject(i);
+                        for (Iterator<String> innerKeys = innerObject.keys(); innerKeys.hasNext(); ) {
+                            String innerKey = innerKeys.next();
+                            System.out.println("    Inner Key: " + innerKey);
+                            System.out.println("    Inner Value: " + preprocessURL(innerObject.get(innerKey).toString()));
+                        }
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            System.out.println("---------------------------------------------ab yaha p nhi yaar");
+        }
+    }
+
+    private static String preprocessURL(String url) {
+        return url.replaceAll("\\\\", "");
     }
 }
