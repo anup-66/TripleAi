@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="blue">#03A9F4</color>
+    <color name="darkgrey">#333232</color>
+    <color name="green">#2dba4e</color>
+    <color name="grey">#434141</color>
+    <color name="greyish">#2BCFCACA</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="lightgrey">#979393</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_700">#FC4B41</color>
+    <color name="red">#D9FF0000</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#FFEB3B</color>
+    <string name="app_name">TripleAI</string>
+    <string name="gcm_defaultSenderId" translatable="false">790580362803</string>
+    <string name="google_api_key" translatable="false">AIzaSyCgwqQsegmD_oIg_oECukjAviOBNjEAF34</string>
+    <string name="google_app_id" translatable="false">1:790580362803:android:b8c3f0c4c217e4cbdb6d46</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCgwqQsegmD_oIg_oECukjAviOBNjEAF34</string>
+    <string name="google_storage_bucket" translatable="false">tripleai-9c5fd.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="project_id" translatable="false">tripleai-9c5fd</string>
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
+    <style name="custom_card_view" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">48dp</item>
+        <item name="cornerSizeTopLeft">48dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+    <style name="custom_card_view_style" parent="Widget.MaterialComponents.CardView">
+
+        <item name="shapeAppearanceOverlay">@style/custom_card_view</item>
+    </style>
+</resources>

@@ -33,11 +33,14 @@ public class NestedAdapter extends RecyclerView.Adapter<NestedAdapter.NestedView
 
     @Override
     public void onBindViewHolder(@NonNull NestedViewHolder holder, int position) {
-        holder.mTv.setText(mapKey.get(position));
+        String key = mapKey.get(position);
+        String data = mMap.get(key);
+        holder.mTv.setText(key);
         holder.mTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Dummy.class);
+                Intent intent = new Intent(context, YouTube.class);
+                intent.putExtra("data", data);
                 context.startActivity(intent);
             }
         });

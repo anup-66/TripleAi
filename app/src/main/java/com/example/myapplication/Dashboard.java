@@ -50,7 +50,16 @@ public class Dashboard extends Fragment {
                              Bundle savedInstanceState) {
 
         map = new HashMap<>();
-        String text = "As a new student interested in python, I want to progress from basic concepts to advanced topics in a structured manner. Please provide me with a step-by-step learning pathway, covering key topics, recommended resources, and suggested keywords for further exploration.\n Provide me all the things in given format only and with no format empty. \n";
+        String text = "As a new student eager to explore Python, " +
+                "I'm looking for a structured learning pathway that takes me from basic concepts " +
+                "to advanced topics. Provide a comprehensive guide covering key topics, recommended resources, " +
+                "and suggested keywords for further exploration. Ensure that each section is filled with relevant content, " +
+                "including descriptions, examples, recommended readings/articles, hands-on exercises/projects, and YouTube videos. " +
+                "Also, predict the approximate timelines for each level of proficiency. " +
+                "The YouTube links should be in the format of full video links (e.g., https://www.youtube.com/watch?v=7lmCu8wz8ro). " +
+                "Ensure that no lists are empty and that the content is organized and consistent across all levels and also " +
+                "the provided youtube links should word" +
+                ", it won't be like opening the link it show error. Before providing the youtube links please check that youtube video is available.\n";
         gptCall(text +
                 "{\n" +
                 "    \"Introduction to [Interest/Field]\": {\n" +
@@ -111,6 +120,67 @@ public class Dashboard extends Fragment {
                 "        \"Advanced Level\": \"\"\n" +
                 "    }\n" +
                 "}");
+//        String text = "As a new student interested in python, I want to progress from basic concepts to advanced topics in a structured manner. Please provide me with a step-by-step learning pathway, covering key topics, recommended resources, and suggested keywords for further exploration.\n Provide me all the things in given format only and with no format empty. \n";
+//        gptCall(text +
+//                "{\n" +
+//                "    \"Introduction to [Interest/Field]\": {\n" +
+//                "         \"All Basic concepts and fundamentals\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Recommended readings or articles\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": []\n" +
+//                "         \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Foundational Knowledge\": {\n" +
+//                "        \"All Key principles and theories\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"All Core concepts and terminology\": [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Hands-on exercises or projects for practice\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": [],\n" +
+//                "        \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Intermediate Level\": {\n" +
+//                "        \"Deeper dive into specific subtopics\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Advanced theories or methodologies\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Case studies or real-world examples\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": [],\n" +
+//                "        \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Advanced Level\": {\n" +
+//                "        \"Specialized topics or advanced techniques\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Cutting-edge research or developments\":  [topic1:{description:\"\" , example: {with proper code examples}},topic2:{description:\"\" , example: {with proper code examples}},...],\n" +
+//                "        \"Opportunities for further exploration or specialization\": [topic1:{link},topic2:{link},...],\n" +
+//                "        \"Keywords for further exploration\": [],\n" +
+//                "        \"YouTube videos\": [\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"},\n" +
+//                "            {\"title\": \"\", \"link\": \"\"}\n" +
+//                "        ]\n" +
+//                "    },\n" +
+//                "    \"Predicted Timelines\": {\n" +
+//                "        \"Introductory Level\": \"\",\n" +
+//                "        \"Foundational Knowledge\": \"\",\n" +
+//                "        \"Intermediate Level\": \"\",\n" +
+//                "        \"Advanced Level\": \"\"\n" +
+//                "    }\n" +
+//                "}");
 
 
 
