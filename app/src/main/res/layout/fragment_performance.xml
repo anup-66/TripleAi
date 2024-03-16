@@ -7,6 +7,17 @@
     android:background="@color/lightgrey"
     tools:context=".Performance">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="413dp"
+        android:layout_height="62dp"
+        android:background="@color/black"
+        android:gravity="center"
+        android:textAlignment="center"
+        app:title="Performance"
+        app:titleTextColor="@color/white"
+        tools:ignore="MissingConstraints" />
+
 
 
 </FrameLayout>

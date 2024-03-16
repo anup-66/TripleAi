@@ -63,6 +63,6 @@ public class JavaFrame extends AppCompatActivity {
                 return false;
             }
         });
-//    bottomNavigationView.setSelectedItemId(R.id.home);
+    bottomNavigationView.setSelectedItemId(R.id.home);
     }
 }

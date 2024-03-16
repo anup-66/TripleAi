@@ -110,12 +110,17 @@ public class VariousSubjects extends AppCompatActivity {
 
 
 
+
+     
+        editText = findViewById(R.id.editTextText);
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 gptCall(prompt);
             }
         });
+
 
 
 
