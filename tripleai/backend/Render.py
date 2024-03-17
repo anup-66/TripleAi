@@ -1,17 +1,25 @@
 import json
 
-from flask import Flask, request, jsonify
-from flask_socketio import SocketIO, emit, join_room, leave_room
+from pymongo import MongoClient
+
+from functions import return_data as rd
+from flask import Flask, request, jsonify, session, redirect
+from flask_socketio import SocketIO, emit, join_room, leave_room, send
 import os
+# from  flask_session import Session
 from flask_cors import CORS
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret'
+app.config['SECRET_KEY'] = 'secret_name'
+app.config["SESSION_PERMANENT"] = False
+app.config['SESSION_TYPE'] = 'filesystem'
 CORS(app)
+# app.secret_key = "BAD_SECRET_KEY"
+# Session(app)
 socketio = SocketIO(app, cors_allowed_origins='*')
 
 # Store code data
 code_data = {}
-import json
 
 ans = """
 {
@@ -29,11 +37,11 @@ ans = """
         },
         "Keywords for further exploration": ["Python syntax", "Conditional statements", "Loops", "String manipulation", "Lists and tuples"],
         "YouTube videos": [
-            {"title": "Python Tutorial for Beginners", "link": "https://youtube.com/python-tutorial"},
-            {"title": "Learn Python Programming", "link": "https://youtube.com/learn-python"},
-            {"title": "Python Crash Course", "link": "https://youtube.com/python-crash-course"},
-            {"title": "Python Programming for Data Science", "link": "https://youtube.com/python-data-science"},
-            {"title": "Python Deep Learning", "link": "https://youtube.com/python-deep-learning"}
+            {"title": "Python Tutorial for Beginners", "link": "https://www.youtube.com/watch?v=7lmCu8wz8ro"},
+            {"title": "Learn Python Programming", "link": "https://www.youtube.com/watch?v=JKCjsRDffXo"},
+            {"title": "Python Crash Course", "link": "https://www.youtube.com/watch?v=7eh4d6sabA0"},
+            {"title": "Python Programming for Data Science", "link": "https://www.youtube.com/watch?v=HkdAHXoRtos"}
+            
         ]
     },
     "Foundational Knowledge": {
@@ -131,63 +139,214 @@ ans = """
 }
 
 """
+import json
+
+from flask import jsonify
+
+import random
+
+from openai import OpenAI
+import os
+clientai = OpenAI()
+import openai
+openai.api_key = os.environ['OPENAI_API_KEY']
+# Set your OpenAI API key
+# openai.api_key = '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'
+prompt = """"As a new student eager to explore"""
+# p2 = """Python"""
+p3 = """,I'm looking for a structured learning pathway that takes me from basic concepts to advanced topics. Provide a comprehensive guide covering key topics, recommended resources, and suggested keywords for further exploration. Ensure that each section is filled with relevant content, including descriptions, examples, recommended readings/articles, hands-on exercises/projects, and YouTube videos. Also, predict the approximate timelines for each level of proficiency. The YouTube links should be in the format of full video links (e.g., https://www.youtube.com/watch?v=7lmCu8wz8ro). Ensure that no lists are empty and that the content is organized and consistent across all levels.Give the answer in proper JSON format"
+{
+    "Introduction to [Interest/Field]": {
+         "All Basic concepts and fundamentals": {topic1:{description:"" , example: {with proper code examples}},topic2:{description:"" , example: {with proper code examples}},...},
+        "Recommended readings or articles": {topic1:{link},topic2:{link},...},
+        "Keywords for further exploration": []
+         "YouTube videos": [
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""}
+        ]
+    },
+    "Foundational Knowledge": {
+        "All Key principles and theories": {topic1:{description:"" , example: {with proper code examples}},topic2:{description:"" , example: {with proper code examples}},...},
+        "All Core concepts and terminology": {topic1:{description:"" , example: {with proper code examples}},topic2:{description:"" , example: {with proper code examples}},...},
+        "Hands-on exercises or projects for practice": {topic1:{link},topic2:{link},...},
+        "Keywords for further exploration": [],
+        "YouTube videos": [
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""}
+        ]
+    },
+    "Intermediate Level": {
+        "Deeper dive into specific subtopics":  {topic1:{description:"" , example: {with proper code examples}},topic2:{description:"" , example: {with proper code examples}},...},
+        "Advanced theories or methodologies":  {topic1:{description:"" , example: {with proper code examples}},topic2:{description:"" , example: {with proper code examples}},...},
+        "Case studies or real-world examples": {topic1:{link},topic2:{link},...},
+        "Keywords for further exploration": [],
+        "YouTube videos": [
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""}
+        ]
+    },
+    "Advanced Level": {
+        "Specialized topics or advanced techniques":  {topic1:{description:"" , example: {with proper code examples}},topic2:{description:"" , example: {with proper code examples}},...},
+        "Cutting-edge research or developments":  {topic1:{description:"" , example: {with proper code examples}},topic2:{description:"" , example: {with proper code examples}},...},
+        "Opportunities for further exploration or specialization": {topic1:{link},topic2:{link},...},
+        "Keywords for further exploration": [],
+        "YouTube videos": [
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""},
+            {"title": "", "link": ""}
+        ]
+    },
+    "Predicted Timelines": {
+        "Introductory Level": "",
+        "Foundational Knowledge": "",
+        "Intermediate Level": "",
+        "Advanced Level": ""
+    }
+}"""
+def chat(prompt,p2,p3):
+# Generate completion
+    completion = clientai.chat.completions.create(
+      model="gpt-3.5-turbo",
+      messages=[
+        {"role": "system", "content": "You are a Education assistant, skilled in explaining The process and timelines of "
+                                      "how to learn any new things from start to advance."},
+        {"role": "user", "content": prompt + p2 + p3 }
+      ]
+    )
+    # Print the generated completion
+    data = completion.choices[0].message.content
+    return data
 
 
-# @socketio.on('connect')
-# def handle_connect():
-#     print('Client connected')
-#
-#
-# @socketio.on('disconnect')
-# def handle_disconnect():
-#     print('Client disconnected')
-#
-#
-# @socketio.on('join_room')
-# def handle_join_room(data):
-#     room_id = data['room_id']
-#     join_room(room_id)
-#     emit('room_joined', {'message': 'Joined room ' + room_id}, room=room_id)
-#
-#
-# @socketio.on('leave_room')
-# def handle_leave_room(data):
-#     room_id = data['room_id']
-#     leave_room(room_id)
-#     emit('room_left', {'message': 'Left room ' + room_id}, room=room_id)
-#
-#
-# @socketio.on('update_code')
-# def handle_update_code(data):
-#     room_id = data['room_id']
-#     code = data['code']
-#     code_data[room_id] = code
-#     emit('code_updated', {'code': code}, room=room_id)
-#
-#
-# @app.route('/get_code', methods=['POST'])
-# def get_code():
-#     room_id = request.json['room_id']
-#     code = code_data.get(room_id, '')
-#     return jsonify({'code': code})
-#
-# @app.route("/search",method = ['Post'])
-# def find():
-#     pass
+# @socketio.on("message")
+# def handleMessage(msg):
+#     print(msg)
+#     # aa = msg.split(":")
+#     # # username = session['username']
+#     # username = aa[0]  # Get the username from session or default to 'Anonymous'
+#     # message_with_username = f"{username}: {aa[1]}"  # Include username in the message
+#     send(msg, broadcast=True)  # Broadcast the message with username
+#     return None
+
+@socketio.on('message')
+def handle_message(message_data):
+    message = message_data['message']
+    username = message_data['username']
+    messages_collection.insert_one({'username': username, 'message': message})
+    print(message)
+    emit('message', {'username': username, 'message': message}, broadcast=True)
+
+@socketio.on('connect')
+def handle_connect():
+    previous_messages = list(messages_collection.find({}, {'_id': 0}))
+    print(previous_messages)
+    emit('previous_messages', previous_messages,broadcast=True)
+
+
+# @socketio.on("username")
+# def username():
+#     emit("username", session['username'])
+client = MongoClient('mongodb://localhost:27017/')
+db = client['chat_app']
+messages_collection = db['messages']
+username = ""
+email = ""
+@app.route("/profile")
+def profile():
+    global username
+    global email
+    # print(session)
+    print(username,email)
+    return jsonify({"username": username,"email":email})
+
+
+db2 = client['TripleAi']  # Replace 'your_database_name' with your actual database name
+users_collection2 = db2['users']  # Assuming you have a collection named 'users'
+
+@app.route("/login", methods=["POST"])
+def login():
+    global username
+    global email
+    if request.method == "POST":
+        data = request.json
+        username = data.get("username")
+        password = data.get("password")
+
+        # Query the database for the provided username
+        user = users_collection2.find_one({"username": username})
+        email = user['email']
+        if user and user['password'] == password:
+            # Set the session username
+            session.pop("name", None)
+            session["username"] = username
+            session.modified = True
+            print(session['username'])
+            return jsonify({"message": "ok"})
+        else:
+            return jsonify({"message": "Invalid username or password"})
+    else:
+        return jsonify({"message": "Method not allowed"})
+
+
+@app.route('/signup', methods=['GET','POST'])
+def signup():
+    global username
+    global email
+    data = request.json
+    username = data.get("username")
+    email = data.get("email")
+    password = data.get("password")
+    print(username,email,password)
+    # Check if username already exists
+    if users_collection2.find_one({"username": username}):
+        return jsonify({"message": "Username already exists"}), 400
+
+    # Insert new user data into the database
+    done = users_collection2.insert_one({
+        "username": username,
+        "email": email,
+        "password": password,
+    })
+    if done:
+
+        print(jsonify({"message": "successful"}))
+
+    return jsonify({"message": "successful"})
+# @app.route("/user")
+# def username_():
+#     return jsonify({"username":session['username']})
 @app.route("/videos")
 def find():
-    List = ['https://www.youtube.com/watch?v=7lmCu8wz8ro', 'https://www.youtube.com/watch?v=JKCjsRDffXo', 'https://www.youtube.com/watch?v=7eh4d6sabA0','https://www.youtube.com/watch?v=HkdAHXoRtos']
-    return jsonify({"data":List})
+    # print(session['name'])
+    List = ['https://www.youtube.com/watch?v=7lmCu8wz8ro', 'https://www.youtube.com/watch?v=JKCjsRDffXo',
+            'https://www.youtube.com/watch?v=7eh4d6sabA0', 'https://www.youtube.com/watch?v=HkdAHXoRtos']
+    return jsonify({"data": List})
 
-from functions import return_data as rd
-# print(final_data)
-# print(json.loads(final_data))
-# print(return_data("python",ans))
+
 @app.route("/data")
 def data():
-    # print(final_data)
+    session['name'] = "anup"
+    session.modified = True
+    # print(session)
+    # search_query = request.args.get('search')
+    # data_ = chat(prompt,search_query,p3)
     final_data = rd("python",ans)
     data1 = final_data
     return data1
+
+
 if __name__ == '__main__':
     socketio.run(app, debug=True)
+    # app.run(debug=True)
+
