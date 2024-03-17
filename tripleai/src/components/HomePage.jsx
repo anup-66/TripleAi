@@ -7,62 +7,89 @@ import Performance from "../Images/performance.svg";
 import News from "../Images/news.svg";
 import Settings from "../Images/settings.svg";
 import Support from "../Images/support.svg";
-import { useLocation } from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import axios from "axios";
 
 function HomePage() {
+  const [name,setName] = useState([]);
+    const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/profile");
+      setName(response.data);
+      console.log(response.data['email'])
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+    useEffect(() => {fetchData();},
+    []);
   return (
     <div className="flex bg-[#f4f9f4]">
       <div className="bg-white h-screen fixed w-[320px] shadow-lg border">
         <div className="flex items-center justify-center mt-[30px]">
-          <img src={Icon} alt="icon" className="logo mr-[10px]" />
+          <img
+            src="/assets/tai.jpeg"
+            alt="icon"
+            className="logo mr-[10px] w-[70px]"
+          />
           <h2 className="title px-1 text-[31.42px] text-[#5f5f5f] font-serif">
             Triple AI{" "}
           </h2>
         </div>
         <div className="flex items-center justify-center mt-[30px] ml-[30px]">
+          <Link to={"/Profile"}>
           <img
             src={Profile}
             alt="icon"
             className="logo mr-[10px] w-[50px] rounded-full"
           />
+            </Link>
           <div className="px-1">
             <p className="text-[16px] font-serif font-bold text-[#5f5f5f]">
-              Hello! Aditi Shaw
+              Hello! {name['username']}
             </p>
             <p className="font-thin font-serif text-[#5f5f5f] text-[14px]">
-              aditishaw2417@gmail.com
+              {name['email']}
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-center mt-[40px]">
+        <div className="flex items-center justify-center mt-[20px]">
           <ul>
-            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex">
+            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex hover:bg-[#c9cbcb] hover:text-black">
               <img src={Dashboard} alt="dashboard" className="mr-[20px]" />
-              <a href="/">Dashboard</a>
+              <Link  to={"/Dashboard"}>
+                <p>Dashboard</p>
+              </Link>
             </li>
-            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex">
+            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex hover:bg-[#c9cbcb] hover:text-black">
               <img
                 src={Transactions}
                 alt="transactions"
                 className="mr-[20px]"
               />
-              <a href="/transactions">transactions</a>
+              <Link to = {"/HomePage"}>
+              <p>Home</p>
+              </Link>
             </li>
-            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex">
+            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex hover:bg-[#c9cbcb] hover:text-black">
               <img src={Performance} alt="Performance" className="mr-[20px]" />
-              <a href="/performance">performance</a>
+              <Link to={"/Main"}>Learn</Link>
             </li>
-            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex">
+            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex hover:bg-[#c9cbcb] hover:text-black">
               <img src={News} alt="News" className="mr-[20px]" />
-              <a href="/news">news</a>
+              <Link to={"/code"}>
+              <p>Code</p>
+              </Link>
             </li>
-            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex">
+            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex hover:bg-[#c9cbcb] hover:text-black">
               <img src={Settings} alt="Settings" className="mr-[20px]" />
-              <a href="/settings">settings</a>
+              <Link to={"/Profile"}>
+              <p>Profile</p>
+              </Link>
             </li>
-            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex">
+            <li className="px-8 py-6 text-[22px] text-[#5f5f5f] font-serif flex hover:bg-[#c9cbcb] hover:text-black">
               <img src={Support} alt="Support" className="mr-[20px]" />
-              <a href="/support">support</a>
+              <Link to={"/support"}>Support</Link>
             </li>
           </ul>
         </div>
